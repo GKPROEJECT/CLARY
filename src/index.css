@@ -1,0 +1,29 @@
+:root {
+  font-family: 'Ubuntu', 'Cantarell', sans-serif;
+  color: #211a31;
+  background: #f8f6fc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  --ink: #211a31;
+  --muted: #7d758e;
+  --line: #e6e1ef;
+  --paper: #fff;
+  --canvas: #f8f6fc;
+  --nav: #251d3d;
+  --rail: #171326;
+  --lime: #c9b8fa;
+  --brand-violet: #6828e8;
+  --brand-blue: #2154ed;
+  --brand-cyan: #18c4ed;
+  --brand-magenta: #c647e8;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 360px; min-height: 100vh; }
+button, input, textarea { font: inherit; }
+button { color: inherit; }
+button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid #78a5dc; outline-offset: 2px; }
+::selection { color: #171326; background: #c9b8fa; }

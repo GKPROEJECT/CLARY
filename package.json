@@ -1,0 +1,77 @@
+{
+  "name": "clary",
+  "private": true,
+  "version": "1.0.0",
+  "description": "CLARY: espacios de trabajo, chat y llamadas para Linux",
+  "author": {
+    "name": "CLARY",
+    "email": "clary@users.noreply.github.com"
+  },
+  "homepage": "https://clary.app",
+  "license": "UNLICENSED",
+  "desktopName": "clary.desktop",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "dev:desktop": "concurrently --kill-others --success first \"vite --host 127.0.0.1\" \"wait-on http://127.0.0.1:5173 && electron .\"",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "dist:linux": "npm run build && electron-builder --linux AppImage pacman"
+  },
+  "build": {
+    "appId": "app.clary.desktop",
+    "productName": "CLARY",
+    "asar": true,
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      { "from": "Logo.png", "to": "Logo.png" }
+    ],
+    "linux": {
+      "category": "Network;InstantMessaging",
+      "target": ["AppImage", "pacman"],
+      "icon": "Logo.png",
+      "synopsis": "Chat, espacios de trabajo y llamadas",
+      "executableName": "clary",
+      "syncDesktopName": true,
+      "maintainer": "CLARY <clary@users.noreply.github.com>",
+      "desktop": {
+        "entry": {
+          "Name": "CLARY",
+          "Comment": "Chat, espacios de trabajo y llamadas",
+          "StartupWMClass": "clary"
+        }
+      },
+      "protocols": [
+        { "name": "CLARY authentication", "schemes": ["clary"] }
+      ]
+    },
+    "directories": {
+      "output": "release"
+    }
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
+    "lucide-react": "^1.66.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "concurrently": "^10.0.6",
+    "electron": "^45.2.1",
+    "electron-builder": "^26.18.0",
+    "oxlint": "^1.89.0",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.5",
+    "wait-on": "^9.5.1"
+  }
+}
